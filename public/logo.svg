@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#aaaaaa"/>
+    </linearGradient>
+  </defs>
+  <!-- Flask icon -->
+  <g transform="translate(0, 8)">
+    <path d="M12 4V14L4 30C3.2 31.6 4.4 34 6.2 34H25.8C27.6 34 28.8 31.6 28 30L20 14V4" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10" y1="4" x2="22" y2="4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8 24H24" stroke="white" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+    <circle cx="13" cy="28" r="1.5" fill="white" opacity="0.5"/>
+    <circle cx="19" cy="26" r="1" fill="white" opacity="0.3"/>
+  </g>
+  <!-- Text: rwelabs -->
+  <text x="40" y="33" font-family="'Outfit', 'Inter', sans-serif" font-size="28" font-weight="700" fill="url(#textGrad)" letter-spacing="-1">
+    rwelabs
+  </text>
+</svg>

@@ -1,0 +1,185 @@
+.works {
+    background: var(--bg-primary);
+    padding: 140px 40px;
+    position: relative;
+}
+
+.worksInner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    margin-bottom: 80px;
+}
+
+.sectionLabel {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+}
+
+.sectionTitle {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s var(--transition-smooth);
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cardVisual {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.cardShape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid;
+    transition: all 0.6s var(--transition-smooth);
+}
+
+.card:hover .cardShape {
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+.cardGlow {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover .cardGlow {
+    opacity: 0.3;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 2;
+}
+
+.cardMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.cardCategory {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.cardDot {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.cardLocation {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.cardTitle {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #fff;
+}
+
+.cardArrow {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease;
+}
+
+.card:hover .cardArrow {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .works {
+        padding: 80px 20px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 48px;
+    }
+
+    .sectionTitle {
+        letter-spacing: -1px;
+    }
+
+    .card {
+        min-height: 300px;
+        padding: 28px;
+    }
+
+    .grid {
+        gap: 14px;
+    }
+}

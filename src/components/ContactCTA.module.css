@@ -1,0 +1,140 @@
+.contactCta {
+    background: var(--bg-primary);
+    padding: 0 40px 140px;
+}
+
+.inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cardGlow {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.08), transparent 70%);
+    pointer-events: none;
+}
+
+.cardGlow2 {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(187, 134, 252, 0.08), transparent 70%);
+    pointer-events: none;
+}
+
+.cardTitle {
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.cardDesc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 36px;
+    max-width: 400px;
+}
+
+.cardButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: #fff;
+    color: #000;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+.cardButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+}
+
+.cardButton svg {
+    transition: transform 0.3s ease;
+}
+
+.cardButton:hover svg {
+    transform: translateX(4px);
+}
+
+.cardButtonSecondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+.cardButtonSecondary:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+}
+
+.cardButtonSecondary svg {
+    transition: transform 0.3s ease;
+}
+
+.cardButtonSecondary:hover svg {
+    transform: translate(3px, -3px);
+}
+
+@media (max-width: 1024px) {
+    .inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactCta {
+        padding: 0 20px 80px;
+    }
+
+    .card {
+        padding: 36px 28px;
+    }
+
+    .inner {
+        gap: 14px;
+    }
+}
