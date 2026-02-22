@@ -29,8 +29,9 @@ const projectsData = {
     }
 };
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-    const project = projectsData[params.slug as keyof typeof projectsData];
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+    const resolvedParams = await params;
+    const project = projectsData[resolvedParams.slug as keyof typeof projectsData];
 
     if (!project) {
         return (

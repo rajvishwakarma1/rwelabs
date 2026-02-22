@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 
+// Deployment debug comment
 export function Navbar() {
     return (
         <motion.header
