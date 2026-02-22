@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { ReactLenis } from 'lenis/react';
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "rwelabs — A Digital Experience Lab",
-  description:
-    "A digital-first creative lab building brands with bold storytelling, immersive web design, UI/UX, and digital experiences that redefine how audiences interact with brands online.",
-  keywords: ["web design", "brand identity", "UI/UX", "digital experiences", "creative lab", "rwelabs"],
-  openGraph: {
-    title: "rwelabs — A Digital Experience Lab",
-    description:
-      "A digital-first creative lab building brands with bold storytelling, immersive web design, UI/UX, and digital experiences.",
-    type: "website",
-  },
+  title: "RWELabs",
+  description: "Crafting a future where design meets strategy and impact.",
 };
 
 export default function RootLayout({
@@ -20,8 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="dark scroll-smooth">
+      <body className={`${inter.className} bg-[#0F0E0E] text-[#F7F7F7] antialiased overflow-x-hidden selection:bg-white selection:text-black`}>
+        <ReactLenis root>
+          {children}
+        </ReactLenis>
+      </body>
     </html>
   );
 }

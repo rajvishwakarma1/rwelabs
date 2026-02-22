@@ -1,21 +1,19 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Works from "@/components/Works";
-import Services from "@/components/Services";
-import ContactCTA from "@/components/ContactCTA";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { Clients } from "@/components/Clients";
+import { Projects } from "@/components/Projects";
+import { About } from "@/components/About";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Works />
-        <Services />
-        <ContactCTA />
-      </main>
+    <main className="min-h-screen bg-[#0F0E0E] text-[#F7F7F7]">
+      <Navbar />
+      <Hero />
+      <Clients />
+      <Projects />
+      <About />
       <Footer />
-    </>
+    </main>
   );
 }

@@ -1,128 +1,76 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import styles from "./Hero.module.css";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export default function Hero() {
-    const ref = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end start"],
+export function Hero() {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const formattedTime = time.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Kolkata",
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-    const progressDisplay = useTransform(scrollYProgress, [0, 1], [0, 100]);
+    const [hours, minutes] = formattedTime.split(":");
 
     return (
-        <section ref={ref} className={styles.hero} id="hero">
-            {/* Animated background shapes */}
-            <div className={styles.bgShapes}>
-                <motion.div
-                    className={styles.shape1}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div
-                    className={styles.shape2}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div
-                    className={styles.shape3}
-                    animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
+        <section className="relative min-h-[90vh] flex flex-col justify-end px-6 pb-24 md:px-12 md:pb-32 overflow-hidden bg-[#0F0E0E]">
+            {/* Background Graphic - Represents the large immersive image from the template */}
+            <div className="absolute inset-0 top-20 bg-zinc-900/50 -z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden m-4 md:m-8 border border-white/5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0E] via-transparent to-transparent" />
             </div>
 
-            <motion.div className={styles.heroContent} style={{ y, opacity, scale }}>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-12 max-w-7xl mx-auto w-full z-10">
+
+                {/* Left column: Live Time & Location */}
                 <motion.div
-                    className={styles.badge}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="flex flex-col gap-4 text-sm font-medium tracking-widest text-[#F7F7F7] uppercase opacity-80"
                 >
-                    <span className={styles.badgeDot} />
-                    Available for new projects
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center tabular-nums">
+                            <span>{hours}</span>
+                            <motion.span
+                                animate={{ opacity: [1, 0, 1] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                className="mx-0.5"
+                            >
+                                :
+                            </motion.span>
+                            <span>{minutes}</span>
+                        </div>
+                        <span className="text-zinc-500">INDIA</span>
+                    </div>
                 </motion.div>
 
-                <motion.h1
-                    className={styles.heading}
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                >
-                    A Digital
-                    <br />
-                    Experience Lab
-                </motion.h1>
-
-                <motion.p
-                    className={styles.subheading}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7, duration: 0.7 }}
-                >
-                    Are we a lab? A studio? A secret society of pixel perfectionists?{" "}
-                    <span className={styles.highlight}>Yes.</span>
-                </motion.p>
-
-                <motion.p
-                    className={styles.description}
+                {/* Right column: Main statement */}
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.6 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="max-w-3xl"
                 >
-                    At rwelabs, we craft immersive websites, striking brand identities,
-                    and digital experiences that redefine how audiences interact with
-                    brands online.
-                </motion.p>
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-balance">
+                        Crafting a future where <br className="hidden md:block" />
+                        design meets strategy <br className="hidden md:block" />
+                        and impact.
+                    </h1>
 
-                <motion.div
-                    className={styles.ctaGroup}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1, duration: 0.6 }}
-                >
-                    <a href="#contact" className={styles.ctaButton}>
-                        <span>Book a Call</span>
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                        >
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                    <a href="#works" className={styles.ctaSecondary}>
-                        View Work
-                    </a>
+
                 </motion.div>
 
-                <motion.div
-                    className={styles.scrollIndicator}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 0.6 }}
-                >
-                    <motion.div
-                        className={styles.scrollLine}
-                        animate={{ scaleY: [0, 1, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                </motion.div>
-            </motion.div>
-
-            {/* Progress counter */}
-            <motion.div className={styles.progressCounter}>
-                <motion.span>{progressDisplay}</motion.span>
-                <span className={styles.progressPercent}>%</span>
-            </motion.div>
+            </div>
         </section>
     );
 }
