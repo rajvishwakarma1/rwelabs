@@ -24,13 +24,13 @@ export function Hero() {
     const [hours, minutes] = formattedTime.split(":");
 
     return (
-        <section className="relative min-h-[90vh] flex flex-col justify-end px-6 pb-24 md:px-12 md:pb-32 overflow-hidden bg-[#0F0E0E]">
+        <section className="relative min-h-[90vh] flex flex-col justify-center px-6 pb-20 md:px-12 md:pb-24 overflow-hidden bg-[#0F0E0E]">
             {/* Background Graphic - Represents the large immersive image from the template */}
             <div className="absolute inset-0 top-20 bg-zinc-900/50 -z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden m-4 md:m-8">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0E] via-transparent to-transparent" />
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto w-full z-10 pt-12 md:pt-32">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto w-full z-10 pt-32 md:pt-48">
 
                 {/* Left column: Live Time & Location */}
                 <motion.div
