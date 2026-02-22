@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Clients() {
     return (
-        <section className="bg-[#0F0E0E] text-[#F7F7F7] py-32 px-6 md:px-12 border-y border-white/5 relative overflow-hidden">
+        <section className="bg-[#0F0E0E] text-[#F7F7F7] py-32 px-6 md:px-12 relative overflow-hidden">
             <div
                 className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "24px 24px" }}

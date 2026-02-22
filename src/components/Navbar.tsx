@@ -40,10 +40,10 @@ export function Navbar() {
                         ABOUT
                     </Link>
                     <Link
-                        href="#contact"
+                        href="mailto:rwelabs@gmail.com"
                         className="text-xs font-black tracking-wider border border-white text-[#0F0E0E] bg-white rounded-full px-4 py-2 hover:bg-transparent hover:text-white transition-all"
                     >
-                        GET IN TOUCH
+                        LET&apos;S CHAT
                     </Link>
                 </div>
             </div>
