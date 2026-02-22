@@ -1,17 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export function Hero() {
     const [time, setTime] = useState(new Date());
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setTime(new Date());
         }, 1000);
         return () => clearInterval(timer);
+    }, []);
+
+    // Force-play the video in case autoPlay is blocked
+    useEffect(() => {
+        const vid = videoRef.current;
+        if (vid) {
+            vid.play().catch(() => {});
+        }
     }, []);
 
     const formattedTime = time.toLocaleTimeString("en-IN", {
@@ -25,19 +34,34 @@ export function Hero() {
 
     return (
         <section className="relative min-h-[90vh] flex flex-col justify-center px-6 pb-20 md:px-12 md:pb-24 overflow-hidden bg-[#0F0E0E]">
-            {/* Background Graphic - Represents the large immersive image from the template */}
-            <div className="absolute inset-0 top-20 bg-zinc-900/50 -z-10 rounded-b-[40px] md:rounded-b-[80px] overflow-hidden m-4 md:m-8">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0E] via-transparent to-transparent" />
-            </div>
+            {/* Background Video - full-bleed, autoplays like gaspar.framer.website */}
+            <motion.div
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 z-0 overflow-hidden"
+            >
+                <video
+                    ref={videoRef}
+                    src="/rwelabs.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Dark overlay so text stays readable */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0E] via-[#0F0E0E]/40 to-[#0F0E0E]/20" />
+            </motion.div>
 
-            <div className="flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto w-full z-10 pt-32 md:pt-48">
+            <div className="relative flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto w-full z-10 pt-32 md:pt-48">
 
                 {/* Left column: Live Time & Location */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex flex-col gap-4 text-sm font-medium tracking-widest text-[#F7F7F7] uppercase opacity-80 mt-2 md:mt-8"
+                    className="flex flex-col gap-4 text-sm font-medium tracking-widest text-white uppercase mt-2 md:mt-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                 >
                     <div className="flex items-center gap-3">
                         <div className="flex items-center tabular-nums">
@@ -51,7 +75,7 @@ export function Hero() {
                             </motion.span>
                             <span>{minutes}</span>
                         </div>
-                        <span className="text-zinc-500">INDIA</span>
+                        <span className="text-zinc-300">INDIA</span>
                     </div>
                 </motion.div>
 
@@ -62,7 +86,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="max-w-3xl"
                 >
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-balance">
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] text-balance text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
                         Crafting a future where <br className="hidden md:block" />
                         design meets strategy <br className="hidden md:block" />
                         and impact.
