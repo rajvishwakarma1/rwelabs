@@ -38,7 +38,11 @@ export function Clients() {
                     </div>
                     <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold tracking-wide">
                         <img src="https://flagcdn.com/gb.svg" alt="UK Flag" className="w-10 h-auto shadow-sm" />
-                        <span>London</span>
+                        <span>UK</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold tracking-wide">
+                        <img src="https://flagcdn.com/sg.svg" alt="Singapore Flag" className="w-10 h-auto shadow-sm" />
+                        <span>Singapore</span>
                     </div>
                 </motion.div>
             </div>
